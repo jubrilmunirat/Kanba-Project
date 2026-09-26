@@ -6,6 +6,7 @@ import All from "../component/ui/All";
 import Completed from "../component/ui/Completed";
 import InProgress from "../component/ui/InProgress";
 import Todo from "../component/ui/Todo";
+import AddTask from "../component/ui/AddTask";
 
 export default function KanbaBoard() {
 	const [cards, setCards] = useState([]);
@@ -73,19 +74,22 @@ export default function KanbaBoard() {
 		}
 	}
 	return (
-		<DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
-			<div className='parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700'>
-				<All cards={cards} deleteCard={handleDeleteCards} />
-				<div className='hidden md:block'>
-					<Todo cards={cards} deleteCard={handleDeleteCards} />
+		<div>
+			<AddTask />
+			<DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
+				<div className='parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700'>
+					<All cards={cards} deleteCard={handleDeleteCards} />
+					<div className='hidden md:block'>
+						<Todo cards={cards} deleteCard={handleDeleteCards} />
+					</div>
+					<div className='hidden md:block'>
+						<InProgress cards={cards} deleteCard={handleDeleteCards} />
+					</div>
+					<div className='hidden md:block'>
+						<Completed cards={cards} deleteCard={handleDeleteCards} />
+					</div>
 				</div>
-				<div className='hidden md:block'>
-					<InProgress cards={cards} deleteCard={handleDeleteCards} />
-				</div>
-				<div className='hidden md:block'>
-					<Completed cards={cards} deleteCard={handleDeleteCards} />
-				</div>
-			</div>
-		</DndContext>
+			</DndContext>
+		</div>
 	);
 }
