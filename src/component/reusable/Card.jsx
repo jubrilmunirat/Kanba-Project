@@ -12,10 +12,12 @@ export default function Card({
 	displayDescription,
 	id,
 	deleteCard,
+	draggable= true
 }) {
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable({
 			id: id,
+			disabled: !draggable
 		});
 
 	const style = {

@@ -37,7 +37,7 @@ export default function Bin({ closeBin }) {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/20">
-      <div className="w-full max-w-[400px] h-full bg-white shadow-xl p-5 overflow-y-auto">
+      <div className="w-full max-w-[350px] h-full bg-white shadow-xl p-5 overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold">Bin</h2>
 

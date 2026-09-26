@@ -7,14 +7,20 @@ import About from "./Pages/About";
 import AddTask from "./component/ui/AddTask";
 import Footer from "./Statics/Footer";
 
+import Signup from "./Pages/Aunthentication/SignUp";
+import Login from "./Pages/Aunthentication/Login";
+import Home from "./Pages/Home";
 function App() {
 	return (
 		<BrowserRouter>
 			<Header />
-			<AddTask />
+
 			<Routes>
-				<Route path='/' element={<KanbaBoard />} />
 				<Route path='/about' element={<About />} />
+				<Route path='/signup' element={<Signup />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/tasks' element={<KanbaBoard />} />
+				<Route path='/' element={<Home />} />
 			</Routes>
 			<Footer/>
 		</BrowserRouter>

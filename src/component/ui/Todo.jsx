@@ -4,8 +4,12 @@ import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 
 export default function Todo({ cards, deleteCard }) {
-  const { setNodeRef } = useDroppable({ id: "todo" });
-
+  const { setNodeRef } = useDroppable({
+    id: "todo",
+    data: {
+      category: "todo",
+    },
+  });
   // const todoCards = ["todo-1", "todo-2"];
   const todoCards = cards.filter(
     (card) => card.category === "todo" && !card.deleted,
@@ -14,7 +18,7 @@ export default function Todo({ cards, deleteCard }) {
   return (
     <div
       ref={setNodeRef}
-      className="flex flex-col max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar gap-4 justify-start py-3 px-4 rounded-3xl bg-[#9DC183]"
+      className="flex flex-col min-h-[200px] max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar gap-4 justify-start py-3 px-4 rounded-3xl bg-[#9DC183]"
     >
       <div>
         <div className="flex gap-1.5 w-fit bg-[#77b14e] py-1 px-2 text-sm rounded-2xl items-center">
@@ -32,6 +36,7 @@ export default function Todo({ cards, deleteCard }) {
               dateCreated={card.dateCreated}
               backgroundColor="bg-[#bae3a8]"
               deleteCard={deleteCard}
+              draggable={true}
             />
           ))}
           {/* <Card
